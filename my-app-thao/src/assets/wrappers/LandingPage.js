@@ -4,7 +4,7 @@ const Wrapper = styled.section`
   nav {
     width: var(--fluid-width);
     max-width: var(--max-width);
-    margin: 0 auto;
+    padding: 0 20px; 
     height: var(--nav-height);
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@ const Wrapper = styled.section`
     margin-top: -3rem;
   }
   h1 {
-    font-weight: 700;
+    font-weight: 400;
     span {
       color: var(--primary-500);
     }

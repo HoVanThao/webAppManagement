@@ -1,12 +1,30 @@
-import { Link } from "react-router-dom";
+import { Logo, FormRow } from '../components';
+import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div>
-            <h1>Login</h1>
-            <Link to={'/register'}>Register page</Link >
-        </div>
+        <Wrapper>
+            <form className='form'>
+                <Logo />
+                <h4>Đăng nhập</h4>
+                <FormRow type='email' name='email' defaultValue='hovanthao0611cs@gmail.com' />
+                <FormRow type='password' name='Mật khẩu' defaultValue='Vanthao123@' />
+                <button type='submit' className='btn btn-block'>
+                    Đăng nhập
+                </button>
+                <button type='button' className='btn btn-block'>
+                    Khám phá ứng dụng
+                </button>
+                <p>
+                    Bạn chưa có tài khoản?
+                    <Link to='/register' className='member-btn'>
+                        Đăng kí
+                    </Link>
+                </p>
+            </form>
+        </Wrapper>
     );
-}
-
+};
 export default Login;
