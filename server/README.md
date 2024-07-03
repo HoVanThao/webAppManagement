@@ -2319,6 +2319,7 @@ A library for HTTP status codes is useful because it provides a comprehensive an
 [Http Status Codes](https://www.npmjs.com/package/http-status-codes)
 
 ```sh
+
 npm i http-status-codes@2.2.0
 
 ```
@@ -2485,7 +2486,7 @@ import { body, validationResult } from 'express-validator';
 
 app.post(
   '/api/v1/test',
-  [body('name').notEmpty().withMessage('name is required')],
+  [body('name').notEmpty().withMessage('name is required')].isLength( min:50).withMessage('name must be at  least 50'),
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
