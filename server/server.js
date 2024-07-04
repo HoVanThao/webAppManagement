@@ -1,53 +1,44 @@
-import express from "express";
+import express from 'express';
+import 'express-async-errors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-// import 'express-async-errors';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import authRouter from './routers/authRouter.js';
+import jobRouter from './routers/jobRouter.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
+import cookieParser from 'cookie-parser';
+import userRouter from './routers/userRouter.js';
 
 dotenv.config();
 
-import jobRouter from './routers/jobRouter.js';
-import { body, validationResult } from "express-validator";
-
-
 const app = express();
-
-try {
-    const response = await fetch(
-        'https://www.course-api.com/react-useReducer-cart-project'
-    );
-    const cartData = await response.json();
-    console.log(cartData);
-} catch (error) {
-    console.log(error);
-}
-
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-
-
 app.use(express.json());
+app.use(cookieParser());
 
-
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', authenticateUser, userRouter);
+app.use('/api/v1/jobs', authenticateUser, jobRouter);
 
 app.get('/', (req, res) => {
     res.send('hello world');
 });
 
-
-app.use('/api/v1/jobs', jobRouter);
-
+app.get('/api/v1/test', (req, res) => {
+    res.json({ msg: 'test route' });
+});
 
 app.use('*', (req, res) => {
     res.status(404).json({ msg: 'not found' });
 });
 
-app.use(errorHandlerMiddleware);
 
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 
@@ -60,6 +51,3 @@ try {
     console.log(error);
     process.exit(1);
 }
-
-
-
