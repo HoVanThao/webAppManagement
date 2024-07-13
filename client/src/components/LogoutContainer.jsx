@@ -20,7 +20,7 @@ const LogoutContainer = () => {
                     <FaUserCircle />
                 )}
 
-                {user?.name}
+                {user?.name + ' ' + user?.lastName}
                 <FaCaretDown />
             </button>
             <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>

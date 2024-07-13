@@ -3610,7 +3610,7 @@ export default Register;
 App.jsx
 
 ```jsx
-{
+{ 
   path: 'register',
   element: <Register />,
   action: () => {
@@ -3650,7 +3650,7 @@ import { action as registerAction } from './pages/Register';
 {
   path: 'register',
   element: <Register />,
-  action:registerAction
+  action:registerAction     
 },
 ```
 
@@ -3737,7 +3737,7 @@ import { Link, Form, redirect, useNavigation } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import { FormRow, Logo } from '../components';
 import customFetch from '../utils/customFetch';
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'; 
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -3791,7 +3791,7 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData);
   const errors = { msg: '' };
   if (data.password.length < 3) {
-    errors.msg = 'password too short';
+    errors.msg = 'Mật khẩu quá ngắn';
     return errors;
   }
   try {

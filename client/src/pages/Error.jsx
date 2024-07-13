@@ -20,7 +20,10 @@ const Error = () => {
     return (
         <Wrapper>
             <div>
-                <h3>something went wrong</h3>
+                <img src={img} alt='not found 1' />
+                <h3>Ohh! something went wrong</h3>
+                <p>We can't seem to find the page you're looking for</p>
+                <Link to='/dashboard'>back home</Link>
             </div>
         </Wrapper>
     );
