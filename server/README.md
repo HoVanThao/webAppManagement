@@ -4018,6 +4018,7 @@ pages/AddJob.jsx
 AddJob.jsx
 
 ```js
+
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -4031,6 +4032,7 @@ export const action = async ({ request }) => {
     return error;
   }
 };
+
 ```
 
 #### Pending Class and Redirect
