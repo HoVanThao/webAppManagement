@@ -56,7 +56,7 @@ const AddJob = () => {
                         className='btn btn-block form-btn '
                         disabled={isSubmitting}
                     >
-                        {isSubmitting ? 'Thêm mới...' : 'Thêm mới'}
+                        {isSubmitting ? 'Đang thêm mới...' : 'Thêm mới'}
                     </button>
                 </div>
             </Form>

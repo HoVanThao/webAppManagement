@@ -5,6 +5,8 @@ import JobInfo from './JobInfo';
 import { Form } from 'react-router-dom';
 import day from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import ConfirmDeleteModal from './ConfirmDeleteModal ';
+
 day.extend(advancedFormat);
 
 const Job = ({
@@ -16,7 +18,9 @@ const Job = ({
     createdAt,
     jobStatus,
 }) => {
+
     const date = day(createdAt).format('MMM Do, YYYY');
+
 
     return (
         <Wrapper>
@@ -36,14 +40,16 @@ const Job = ({
                 </div>
 
                 <footer className='actions'>
-                    <Link className='btn edit-btn'>Edit</Link>
-                    <Form>
+                    <Link className='btn edit-btn' to={`../edit-job/${_id}`}>Chỉnh sửa</Link>
+                    <Form method='delete' action={`../delete-job/${_id}`}>
                         <button type='submit' className='btn delete-btn'>
-                            Delete
+                            Xóa
                         </button>
                     </Form>
+
                 </footer>
             </div>
+
         </Wrapper>
     );
 };
