@@ -13,6 +13,7 @@ const Wrapper = styled.article`
   }
   .count {
     display: block;
+    padding-left: 5rem;
     font-weight: 700;
     font-size: 50px;
     color: ${(props) => props.color};

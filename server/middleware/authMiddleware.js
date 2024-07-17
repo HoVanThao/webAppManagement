@@ -1,4 +1,4 @@
-import { UnauthenticatedError, UnauthorizedError } from "../errors/customErrors.js";
+import { UnauthenticatedError, UnauthorizedError, BadRequestError } from "../errors/customErrors.js";
 import { verifyJWT } from '../utils/tokenUtils.js';
 
 export const authenticateUser = (req, res, next) => {
@@ -9,7 +9,8 @@ export const authenticateUser = (req, res, next) => {
 
     try {
         const { userId, role } = verifyJWT(token);
-        req.user = { userId, role };
+        const testUser = userId === '6694621a186d6ff67ccfa2bd';
+        req.user = { userId, role, testUser };
         next();
     } catch (error) {
         throw new UnauthenticatedError('xác thực không hợp lệ');
@@ -23,4 +24,11 @@ export const authorizePermissions = (...roles) => {
         }
         next();
     };
+};
+
+export const checkForTestUser = (req, res, next) => {
+    if (req.user.testUser) {
+        throw new BadRequestError('User dùng thử. Chỉ xem!');
+    }
+    next();
 };

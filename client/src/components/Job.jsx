@@ -5,7 +5,6 @@ import JobInfo from './JobInfo';
 import { Form } from 'react-router-dom';
 import day from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import ConfirmDeleteModal from './ConfirmDeleteModal ';
 
 day.extend(advancedFormat);
 

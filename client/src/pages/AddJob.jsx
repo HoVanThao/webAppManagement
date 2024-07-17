@@ -1,6 +1,6 @@
-import { FormRow, FormRowSelect } from '../components';
+import { FormRow, FormRowSelect, SubmitBtn } from '../components';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
-import { Form, useNavigation, redirect, useOutletContext } from 'react-router-dom';
+import { Form, redirect, useOutletContext } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import customFetch from '../utils/customFetch';
 import { JOB_TYPE, JOB_STATUS } from '../utils/constants';
@@ -22,13 +22,12 @@ export const action = async ({ request }) => {
 
 const AddJob = () => {
     const { user } = useOutletContext();
-    const navigation = useNavigation();
-    const isSubmitting = navigation.state === 'submitting';
+
 
     return (
         <Wrapper>
             <Form method='post' className='form'>
-                <h4 className='form-title'>add job</h4>
+                <h4 className='form-title'>Thêm mới công việc</h4>
                 <div className='form-center'>
                     <FormRow type='text' name='position' labelText='Chức vụ' />
                     <FormRow type='text' name='company' labelText='Công ty' />
@@ -51,13 +50,7 @@ const AddJob = () => {
                         list={Object.values(JOB_TYPE)}
                     />
 
-                    <button
-                        type='submit'
-                        className='btn btn-block form-btn '
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? 'Đang thêm mới...' : 'Thêm mới'}
-                    </button>
+                    <SubmitBtn formBtn ten={'Thêm mới'} />
                 </div>
             </Form>
         </Wrapper>

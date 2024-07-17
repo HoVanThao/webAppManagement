@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   }
   .dropdown {
     position: absolute;
-    top: 35px;
+    top: 40px;
     left: 0;
     width: 100%;
     box-shadow: var(--shadow-2);
